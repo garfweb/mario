@@ -1,6 +1,7 @@
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
-    mySprite.setVelocity(0, -100)
-    mySprite.ay = 150
+    if (mySprite.isHittingTile(CollisionDirection.Bottom)) {
+        mySprite.vy = -150
+    }
 })
 let mySprite: Sprite = null
 scene.setBackgroundColor(3)
@@ -26,3 +27,4 @@ mySprite = sprites.create(img`
 controller.moveSprite(mySprite, 100, 0)
 tiles.placeOnRandomTile(mySprite, assets.tile`myTile`)
 scene.cameraFollowSprite(mySprite)
+mySprite.ay = 300
